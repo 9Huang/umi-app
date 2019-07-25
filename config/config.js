@@ -136,6 +136,18 @@ export default {
           hideInMenu: true,
         },
         {
+          name: 'wallet-class-list',
+          path: '/finance/wallet/wallet-class-list',
+          component: './finance/wallet/wallet-class-list',
+          hideInMenu: true,
+        },
+        {
+          name: 'wallet-type-list',
+          path: '/finance/wallet/wallet-type-list',
+          component: './finance/wallet/wallet-type-list',
+          hideInMenu: true,
+        },
+        {
           path: '/',
           name: 'welcome',
           icon: 'smile',
@@ -166,7 +178,7 @@ export default {
         {
           path: '/template/list',
           name: '列表页',
-          icon: 'dashboard',
+          icon: 'table',
           children: [
             {
               name: '查询表格',
@@ -188,7 +200,7 @@ export default {
         {
           path: '/template/profile',
           name: '详情页',
-          icon: 'dashboard',
+          icon: 'profile',
           children: [
             {
               name: '基础详情页',
@@ -199,6 +211,30 @@ export default {
               name: '高级详情页',
               path: '/template/profile/advanced',
               exact: true,
+            },
+          ],
+        },
+        {
+          path: '/finance',
+          name: '财务',
+          icon: 'pay-circle',
+          children: [
+            {
+              path: '/finance/wallet',
+              name: '钱包',
+              icon: 'wallet',
+              children: [
+                {
+                  name: '钱包分类列表',
+                  path: '/finance/wallet/wallet-class-list',
+                  exact: true,
+                },
+                {
+                  name: '钱包类型列表',
+                  path: '/finance/wallet/wallet-type-list',
+                  exact: true,
+                },
+              ],
             },
           ],
         },
