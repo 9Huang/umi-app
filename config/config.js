@@ -1,9 +1,11 @@
 import defaultSettings from './defaultSettings'; // https://umijs.org/config/
+import router from 'router';
 
 import slash from 'slash2';
 import webpackPlugin from './plugin.config';
 const { pwa, primaryColor } = defaultSettings; // preview.pro.ant.design only do not use in your production ;
 // preview.pro.ant.design 专用环境变量，请不要在你的项目中使用它。
+const { routes } = router;
 
 const { ANT_DESIGN_PRO_ONLY_DO_NOT_USE_IN_YOUR_PRODUCTION } = process.env;
 const isAntDesignProPreview = ANT_DESIGN_PRO_ONLY_DO_NOT_USE_IN_YOUR_PRODUCTION === 'site';
@@ -80,173 +82,7 @@ export default {
   },
   devtool: isAntDesignProPreview ? 'source-map' : false,
   // umi routes: https://umijs.org/zh/guide/router.html
-  routes: [
-    {
-      path: '/',
-      component: '../layouts/BasicLayout',
-      Routes: ['src/pages/Authorized'],
-      authority: ['admin', 'user'],
-      routes: [
-        {
-          name: 'analysis',
-          path: '/template/dashboard/analysis',
-          component: './template/dashboard/analysis',
-          hideInMenu: true,
-        },
-        {
-          name: 'monitor',
-          path: '/template/dashboard/monitor',
-          component: './template/dashboard/monitor',
-          hideInMenu: true,
-        },
-        {
-          name: 'workplace',
-          path: '/template/dashboard/workplace',
-          component: './template/dashboard/workplace',
-          hideInMenu: true,
-        },
-        {
-          name: 'table-list',
-          path: '/template/list/table-list',
-          component: './template/list/table-list',
-          hideInMenu: true,
-        },
-        {
-          name: 'basic-list',
-          path: '/template/list/basic-list',
-          component: './template/list/basic-list',
-          hideInMenu: true,
-        },
-        {
-          name: 'card-list',
-          path: '/template/list/card-list',
-          component: './template/list/card-list',
-          hideInMenu: true,
-        },
-        {
-          name: 'basic',
-          path: '/template/profile/basic',
-          component: './template/profile/basic',
-          hideInMenu: true,
-        },
-        {
-          name: 'advanced',
-          path: '/template/profile/advanced',
-          component: './template/profile/advanced',
-          hideInMenu: true,
-        },
-        {
-          name: 'wallet-class-list',
-          path: '/finance/wallet/wallet-class-list',
-          component: './finance/wallet/wallet-class-list',
-          hideInMenu: true,
-        },
-        {
-          name: 'wallet-type-list',
-          path: '/finance/wallet/wallet-type-list',
-          component: './finance/wallet/wallet-type-list',
-          hideInMenu: true,
-        },
-        {
-          path: '/',
-          name: 'welcome',
-          icon: 'smile',
-          component: './Welcome',
-        },
-        {
-          path: '/template/dashboard',
-          name: 'dashboard',
-          icon: 'dashboard',
-          children: [
-            {
-              name: '分析页',
-              path: '/template/dashboard/analysis',
-              exact: true,
-            },
-            {
-              name: '监控页',
-              path: '/template/dashboard/monitor',
-              exact: true,
-            },
-            {
-              name: '工作台',
-              path: '/template/dashboard/workplace',
-              exact: true,
-            },
-          ],
-        },
-        {
-          path: '/template/list',
-          name: '列表页',
-          icon: 'table',
-          children: [
-            {
-              name: '查询表格',
-              path: '/template/list/table-list',
-              exact: true,
-            },
-            {
-              name: '标准列表',
-              path: '/template/list/basic-list',
-              exact: true,
-            },
-            {
-              name: '卡片列表',
-              path: '/template/list/card-list',
-              exact: true,
-            },
-          ],
-        },
-        {
-          path: '/template/profile',
-          name: '详情页',
-          icon: 'profile',
-          children: [
-            {
-              name: '基础详情页',
-              path: '/template/profile/basic',
-              exact: true,
-            },
-            {
-              name: '高级详情页',
-              path: '/template/profile/advanced',
-              exact: true,
-            },
-          ],
-        },
-        {
-          path: '/finance',
-          name: '财务',
-          icon: 'pay-circle',
-          children: [
-            {
-              path: '/finance/wallet',
-              name: '钱包',
-              icon: 'wallet',
-              children: [
-                {
-                  name: '钱包分类列表',
-                  path: '/finance/wallet/wallet-class-list',
-                  exact: true,
-                },
-                {
-                  name: '钱包类型列表',
-                  path: '/finance/wallet/wallet-type-list',
-                  exact: true,
-                },
-              ],
-            },
-          ],
-        },
-        {
-          component: './404',
-        },
-      ],
-    },
-    {
-      component: './404',
-    },
-  ],
+  routes: routes,
   // Theme for antd: https://ant.design/docs/react/customize-theme-cn
   theme: {
     'primary-color': primaryColor,
