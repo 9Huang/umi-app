@@ -1,7 +1,7 @@
 import request from '@/utils/request';
-import {CardListItemDataType} from "./data";
+import { CardListItemDataType } from './data';
 
-interface ParamsType extends Partial<CardListItemDataType>{
+interface ParamsType extends Partial<CardListItemDataType> {
   count?: number;
 }
 

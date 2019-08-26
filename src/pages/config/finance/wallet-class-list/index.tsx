@@ -25,8 +25,8 @@ interface WalletClassListState {
 }
 
 const mapStateToProps = ({
- configFinanceWalletClassList,
- loading,
+  configFinanceWalletClassList,
+  loading,
 }: {
   configFinanceWalletClassList: StateType;
   loading: {
@@ -39,7 +39,6 @@ const mapStateToProps = ({
 
 @connect(mapStateToProps)
 class WalletClassList extends Component<WalletClassListProps, WalletClassListState> {
-
   state: WalletClassListState = { visible: false, done: false, current: undefined };
 
   formLayout = {
@@ -60,21 +59,21 @@ class WalletClassList extends Component<WalletClassListProps, WalletClassListSta
   }
 
   showModal = () => {
-    this.setState({ visible: true, current: undefined, });
+    this.setState({ visible: true, current: undefined });
   };
 
   showEditModal = (item: CardListItemDataType) => {
-    this.setState({ visible: true, current: item, });
+    this.setState({ visible: true, current: item });
   };
 
   handleDone = () => {
     setTimeout(() => this.addBtn && this.addBtn.blur(), 0);
-    this.setState({ done: false, visible: false, });
+    this.setState({ done: false, visible: false });
   };
 
   handleCancel = () => {
     setTimeout(() => this.addBtn && this.addBtn.blur(), 0);
-    this.setState({ visible: false, });
+    this.setState({ visible: false });
   };
 
   handleSubmit = (e: React.FormEvent) => {
@@ -86,7 +85,7 @@ class WalletClassList extends Component<WalletClassListProps, WalletClassListSta
     setTimeout(() => this.addBtn && this.addBtn.blur(), 0);
     form.validateFields((err: string | undefined, fieldsValue: CardListItemDataType) => {
       if (err) return;
-      this.setState({ done: true, });
+      this.setState({ done: true });
       dispatch({
         type: 'configFinanceWalletClassList/submit',
         payload: { id, ...fieldsValue },
@@ -103,7 +102,6 @@ class WalletClassList extends Component<WalletClassListProps, WalletClassListSta
   };
 
   render() {
-
     const {
       configFinanceWalletClassList: { list },
       loading,
@@ -113,11 +111,7 @@ class WalletClassList extends Component<WalletClassListProps, WalletClassListSta
       form: { getFieldDecorator },
     } = this.props;
 
-    const {
-      visible,
-      done,
-      current = {}
-    } = this.state;
+    const { visible, done, current = {} } = this.state;
 
     const editAndDelete = (key: string, currentItem: CardListItemDataType) => {
       if (key === 'edit') {
@@ -187,7 +181,11 @@ class WalletClassList extends Component<WalletClassListProps, WalletClassListSta
             status="success"
             title="操作成功"
             subTitle="一系列的信息描述，很短同样也可以带标点。"
-            extra={ <Button type="primary" onClick={this.handleDone}>知道了</Button> }
+            extra={
+              <Button type="primary" onClick={this.handleDone}>
+                知道了
+              </Button>
+            }
             className={styles.formResult}
           />
         );
@@ -222,12 +220,23 @@ class WalletClassList extends Component<WalletClassListProps, WalletClassListSta
                 if (item && item.id) {
                   return (
                     <List.Item key={item.id}>
-                      <Card hoverable
-                            className={styles.card}
-                            actions={[
-                              <Icon type="edit" key="edit" title="编辑" onClick={() => this.showEditModal(item)} />,
-                              <Icon type="delete" key="delete" title="删除" onClick={() => confirmDelete(item)} />,
-                            ]}
+                      <Card
+                        hoverable
+                        className={styles.card}
+                        actions={[
+                          <Icon
+                            type="edit"
+                            key="edit"
+                            title="编辑"
+                            onClick={() => this.showEditModal(item)}
+                          />,
+                          <Icon
+                            type="delete"
+                            key="delete"
+                            title="删除"
+                            onClick={() => confirmDelete(item)}
+                          />,
+                        ]}
                       >
                         <Card.Meta
                           avatar={<img alt="" className={styles.cardAvatar} src={item.avatar} />}
@@ -244,8 +253,9 @@ class WalletClassList extends Component<WalletClassListProps, WalletClassListSta
                 }
                 return (
                   <List.Item>
-                    <Button type="dashed" className={styles.newButton} onClick={this.showModal} >
-                      <Icon type="plus" />新增分类
+                    <Button type="dashed" className={styles.newButton} onClick={this.showModal}>
+                      <Icon type="plus" />
+                      新增分类
                     </Button>
                   </List.Item>
                 );
@@ -255,7 +265,7 @@ class WalletClassList extends Component<WalletClassListProps, WalletClassListSta
         </PageHeaderWrapper>
 
         <Modal
-          title={done ? null : `${(current && current.id) ? '编辑' : '新增'}钱包分类`}
+          title={done ? null : `${current && current.id ? '编辑' : '新增'}钱包分类`}
           className={styles.standardListForm}
           width={640}
           bodyStyle={done ? { padding: '72px 0' } : { padding: '28px 0 0' }}
@@ -263,7 +273,6 @@ class WalletClassList extends Component<WalletClassListProps, WalletClassListSta
           visible={visible}
           {...modalFooter}
         >
-
           {getModalContent()}
         </Modal>
       </>

@@ -93,7 +93,6 @@ export default {
                   path: '/config/finance/wallet-class-list',
                   component: './config/finance/wallet-class-list',
                 },
-
               ],
             },
           ],

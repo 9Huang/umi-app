@@ -2,7 +2,7 @@ import { AnyAction, Reducer } from 'redux';
 
 import { EffectsCommandMap } from 'dva';
 import { CardListItemDataType } from './data.d';
-import {add, queryList, update} from './service';
+import { add, queryList, update } from './service';
 
 export interface StateType {
   list: CardListItemDataType[];
@@ -49,15 +49,15 @@ const Model: ModelType = {
         if (paramsCount > 1) {
           // 修改
           callback = update;
-          operateType = "update";
+          operateType = 'update';
         } else if (paramsCount === 1) {
           // 删除
-          operateType = "delete";
+          operateType = 'delete';
         }
       } else {
         // 新增
         callback = add;
-        operateType = "add";
+        operateType = 'add';
       }
       if (callback && operateType) {
         const response = yield call(callback, payload);
@@ -66,7 +66,6 @@ const Model: ModelType = {
           payload: response,
         });
       }
-
     },
   },
 
