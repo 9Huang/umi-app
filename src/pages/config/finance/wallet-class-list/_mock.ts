@@ -103,6 +103,15 @@ function fakeList(count: number): CardListItemDataType[] {
   return list;
 }
 
+// [
+//   {"id":1,"avatar":"/pims/image/bae228cccd645536.png","title":"现金","description":"现金钱包"},
+//   {"id":2,"avatar":"/pims/image/wdGqmHpayyMjiEhcKoVE.png","title":"支付APP","description":"支付宝、微信等"},
+//   {"id":3,"avatar":"/pims/image/bankcard123456.png","title":"银行卡","description":"hello"},
+//   {"id":4,"avatar":"/pims/image/a58c6f522b5ea610.png","title":"会员卡","description":null},
+//   {"id":5,"avatar":"/pims/image/img445454.png","title":"信用卡","description":"银行信用卡、支付宝花呗等"},
+//   {"id":6,"avatar":"/pims/image/img2011102201.png","title":"理财APP","description":null}
+// ]
+
 function getFakeList(req: Request, res: Response) {
   const params = req.query;
 
