@@ -62,6 +62,7 @@
     "mockjs": "^1.0.1-beta3",
     "moment": "^2.24.0",
     "numeral": "^2.0.6",
+    "nzh": "^1.0.4",
     "omit.js": "^1.0.2",
     "path-to-regexp": "^3.0.0",
     "prop-types": "^15.7.2",

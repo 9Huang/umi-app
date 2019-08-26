@@ -45,24 +45,22 @@ interface BasicListState {
   done: boolean;
   current?: Partial<BasicListItemDataType>;
 }
-@connect(
-  ({
-    templateListBasicList,
-    loading,
-  }: {
-    templateListBasicList: StateType;
-    loading: {
-      models: { [key: string]: boolean };
-    };
-  }) => ({
-    templateListBasicList,
-    loading: loading.models.templateListBasicList,
-  }),
-)
-class BasicList extends Component<
-  BasicListProps,
-  BasicListState
-> {
+
+const mapStateToProps = ({
+  templateListBasicList,
+  loading,
+}: {
+  templateListBasicList: StateType;
+  loading: {
+    models: { [key: string]: boolean };
+  };
+}) => ({
+  templateListBasicList,
+  loading: loading.models.templateListBasicList,
+});
+
+@connect(mapStateToProps)
+class BasicList extends Component<BasicListProps, BasicListState> {
   state: BasicListState = { visible: false, done: false, current: undefined };
 
   formLayout = {

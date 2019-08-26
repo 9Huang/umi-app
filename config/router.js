@@ -42,14 +42,7 @@ export default {
             {
               path: '/template/list/search/*',
               name: '搜索列表',
-              routes: [
-                {
-                  name: '文章',
-                  path: '/template/list/search/articles',
-                  component: './template/list/search/articles',
-                  exact: true,
-                },
-              ],
+              routes: [],
             },
             {
               name: '查询表格',
@@ -86,25 +79,21 @@ export default {
           ],
         },
         {
-          path: '/finance/*',
-          name: '财务',
-          icon: 'pay-circle',
+          path: '/config/*',
+          name: '配置',
+          icon: 'setting/',
           routes: [
             {
-              path: '/finance/wallet/*',
-              name: '钱包',
-              icon: 'wallet',
+              path: '/config/finance/*',
+              name: '财务',
+              icon: 'pay-circle',
               routes: [
                 {
-                  name: '钱包分类列表',
-                  path: '/finance/wallet/wallet-class-list',
-                  component: './finance/wallet/wallet-class-list',
+                  name: '钱包分类',
+                  path: '/config/finance/wallet-class-list',
+                  component: './config/finance/wallet-class-list',
                 },
-                {
-                  name: '钱包类型列表',
-                  path: '/finance/wallet/wallet-type-list',
-                  component: './finance/wallet/wallet-type-list',
-                },
+
               ],
             },
           ],

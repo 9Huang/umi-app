@@ -1,5 +1,5 @@
 import defaultSettings from './defaultSettings'; // https://umijs.org/config/
-import router from 'router';
+import router from './router';
 
 import slash from 'slash2';
 import webpackPlugin from './plugin.config';
@@ -134,4 +134,12 @@ export default {
     },
   },
   */
+
+  proxy: {
+    '/pims': {
+      target: 'http://127.0.0.1:9424/',
+      changeOrigin: true,
+    },
+  },
+
 };
