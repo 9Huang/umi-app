@@ -113,20 +113,6 @@ class WalletClassList extends Component<WalletClassListProps, WalletClassListSta
 
     const { visible, done, current = {} } = this.state;
 
-    const editAndDelete = (key: string, currentItem: CardListItemDataType) => {
-      if (key === 'edit') {
-        this.showEditModal(currentItem);
-      } else if (key === 'delete') {
-        Modal.confirm({
-          title: '删除分类',
-          content: '确定删除该分类吗？',
-          okText: '确认',
-          cancelText: '取消',
-          onOk: () => this.deleteItem(currentItem.id),
-        });
-      }
-    };
-
     const confirmDelete = (currentItem: CardListItemDataType) => {
       Modal.confirm({
         title: '删除分类',

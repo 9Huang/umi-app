@@ -2,7 +2,7 @@ import { AnyAction, Reducer } from 'redux';
 
 import { EffectsCommandMap } from 'dva';
 import { CardListItemDataType } from './data.d';
-import { add, queryList, update } from './service';
+import { add, deleteById, queryList, update } from './service';
 
 export interface StateType {
   list: CardListItemDataType[];
@@ -18,7 +18,7 @@ export interface ModelType {
   state: StateType;
   effects: {
     fetch: Effect;
-    add: Effect;
+    submit: Effect;
   };
   reducers: {
     queryList: Reducer<StateType>;
@@ -52,6 +52,8 @@ const Model: ModelType = {
           operateType = 'update';
         } else if (paramsCount === 1) {
           // 删除
+          // 参数只有一个，主键id
+          callback = deleteById;
           operateType = 'delete';
         }
       } else {
