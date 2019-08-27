@@ -52,9 +52,7 @@ class WalletClassList extends Component<WalletClassListProps, WalletClassListSta
     const { dispatch } = this.props;
     dispatch({
       type: 'configFinanceWalletClassList/fetch',
-      payload: {
-        count: 0,
-      },
+      payload: { status: 1 },
     });
   }
 
@@ -158,6 +156,7 @@ class WalletClassList extends Component<WalletClassListProps, WalletClassListSta
         />
       </div>
     );
+
     const nullData: Partial<CardListItemDataType> = {};
 
     const getModalContent = () => {

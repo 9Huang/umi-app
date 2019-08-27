@@ -23,6 +23,7 @@ export interface ModelType {
   reducers: {
     queryList: Reducer<StateType>;
     submit: Reducer<StateType>;
+    add: Reducer<StateType>;
   };
 }
 
@@ -47,17 +48,16 @@ const Model: ModelType = {
       if (payload && payload.id) {
         let paramsCount = Object.keys(payload).length;
         if (paramsCount > 1) {
-          // 修改
+          // 如果记录id存在，且参数个数大于1，则说明此时是编辑操作
           callback = update;
           operateType = 'update';
         } else if (paramsCount === 1) {
-          // 删除
-          // 参数只有一个，主键id
+          // 如果记录id存在，且参数个数等于1，则说明此时是删除操作
           callback = deleteById;
           operateType = 'delete';
         }
       } else {
-        // 新增
+        // 如果记录id不存在，则说明此时是新增操作
         callback = add;
         operateType = 'add';
       }
@@ -78,7 +78,7 @@ const Model: ModelType = {
         list: action.payload,
       };
     },
-    submit(state, action) {
+    add(state, action) {
       return {
         ...state,
         list: action.payload,
