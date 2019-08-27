@@ -25,9 +25,9 @@ export async function update(params: ParamsType) {
   });
 }
 
-// export async function delete(params: {id:number}) {
-//   return request('/pims/config/finance/wallet/class/deleteById', {
-//     method: 'DELETE',
-//     params: { id: params.id },
-//   });
-// }
+export async function deleteById(params: ParamsType) {
+  return request('/pims/config/finance/wallet/class/deleteById', {
+    method: 'DELETE',
+    params: { id: params.id },
+  });
+}
